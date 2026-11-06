@@ -1,0 +1,21 @@
+You are organizing a teacher's PDF into a small, reviewable list of study topics.
+
+The document has {{page_count}} pages. Each outline line has this shape:
+
+chunk_id | pages X-Y | section title | first 200 characters
+
+{{mode_instructions}}
+
+Rules:
+- Return between 3 and 20 topics unless the document is very short.
+- Every topic must contain at least one chunk_id from the outline.
+- Every chunk_id may appear in only one topic.
+- Page ranges must be inside 1-{{page_count}}, and page_start must be <= page_end.
+- Titles must be unique, descriptive, 3-90 characters, and must not end with punctuation.
+- Summaries must be one or two plain sentences, at most 300 characters.
+- Keep the original chunk_id strings exactly as shown.
+- Do not invent chunk ids, pages, sections, or facts.
+- Return JSON only, matching the requested schema.
+
+Outline:
+{{outline}}

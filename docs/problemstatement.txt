@@ -1,0 +1,67 @@
+# Comprehensive Problem Statement: RAG-Powered Multi-Portal Learning Management System (LMS)
+
+## 1. Context & Background
+
+Modern educational institutions, EdTech startups, and corporate training programs require centralized, intelligent platforms to manage the entire learning lifecycle. Traditional Learning Management Systems (LMS) often suffer from disconnected workflows where content ingestion, task assignment, student tracking, and automated assessment operate in silos.
+
+This project aims to build an end-to-end, intelligent **Multi-Portal Learning Management System (LMS)** powered by a Retrieval-Augmented Generation (RAG) backend. The platform unifies administrative control, automated RAG-driven content extraction, instructor-led publishing, and student task/assessment execution into a single, scalable ecosystem.
+
+---
+
+## 2. Target Users & Portals
+
+The platform architecture is structured around three dedicated user portals with distinct operational scopes:
+
+* **Students:** Learners who require a distraction-free interface to track pending or completed weekly coursework, view institutional announcements, execute interactive quizzes, and monitor their learning progress.
+* **Teachers (Instructors):** Educators who need intelligent tooling to ingest PDF learning materials, automatically parse topics via RAG, selectively release content, and monitor cohort-wide analytics, completion rates, and knowledge gaps.
+* **Administrators (Super Users):** System operators who require full-stack access to govern the user lifecycle (CRUD operations for students, teachers, and admins), manage content repositories, configure portal permissions, and oversee system-wide operations.
+
+---
+
+## 3. Core Functional Requirements & Architecture
+
+### A. Teacher Portal: RAG Content Ingestion & Selective Publishing
+
+* **i) Automated RAG Ingestion Pipeline:**
+* Instructors can upload PDF learning materials, textbooks, and study guides.
+* The system processes documents through a robust RAG pipeline (**Load $\rightarrow$ Chunk $\rightarrow$ Embed $\rightarrow$ Store in Vector DB**).
+* **Tech Constraints:** Embedding via local `sentence-transformers/all-MiniLM-L6-v2` (no API key required, 384-dimension vectors); intelligent chunking strategy inspecting source data; vector persistence via ChromaDB; LLM generation powered by Groq (secure `.env` key management).
+
+
+* **ii) Dynamic Topic Extraction:** The RAG pipeline analyzes the uploaded PDF corpus and automatically displays a structured list of extracted topics to the instructor.
+* **iii) Selective Release Workflow:** Ingested topics remain unreleased by default. Instructors review and selectively choose specific topics to publish—**only upon this manual release** do the tasks and learning modules become visible within the student portal's task pipeline.
+
+### B. Student Portal
+
+* **i) Announcement Section:** A centralized broadcast feed enabling students to instantly view official institutional or instructor announcements.
+* **ii) "Your Tasks" Section:** A dedicated task management module displaying weekly deliverables released by teachers. Features include:
+* Filtering and sorting capabilities by task status (**Completed**, **Incomplete**, and **All Tasks**).
+* Clear visual badges displaying **Completion Rates**, **Due Dates**, and incomplete status labels.
+
+
+* **iii) Test Section:** An interactive evaluation module where students answer questions derived directly from the content released in the tasks section to test and reinforce their knowledge retention.
+
+### C. Teacher Portal (Analytics & Dashboards)
+
+* **i) Review & Activity Dashboard:** A macro-level analytics view displaying real-time aggregated telemetry across all students, including:
+* Overall and individual student completion rates.
+* Completed topics vs. pending workloads.
+* Engagement metrics (last active timestamp and total days active).
+* Test attempt history mapped alongside scores and specific areas where students lack knowledge.
+
+
+
+### D. Admin Portal (Super User Access)
+
+* **Full-System Oversight:** Universal read, write, and execute permissions across every section, portal, and database table.
+* **User & Content Management:** Complete Create, Read, Update, and Delete (CRUD) capabilities for managing user accounts (students, teachers, admins), roles, and repository content.
+* **Access Control:** Granular permission configuration to control visibility and functional boundaries across portals.
+
+---
+
+## 4. Technical Scope & Delivery Strategy
+
+* **Phased UI Rollout:** The initial release displays all portal components in a unified interface to streamline end-to-end testing, followed by modular access control segregation for individual user roles.
+* **Deliverables:** Fully functional RAG-powered application codebase, persistent ChromaDB vector storage, environment configuration guidelines, and comprehensive sample Q&A integration.
+
+---

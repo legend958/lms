@@ -1,0 +1,28 @@
+# Optional Playwright runner that lives inside the compose network.
+#
+# Chromium on the host can stall on Next.js static chunks served through the
+# Docker Desktop port proxy. Running the browser next to `web` removes that
+# proxy hop and keeps the suite deterministic:
+#
+#   docker compose --env-file .env -f infra/docker-compose.yml \
+#     -f infra/docker-compose.e2e.yml --profile e2e run --rm e2e
+#
+services:
+  e2e:
+    image: mcr.microsoft.com/playwright:v1.64.1-noble
+    profiles: ["e2e"]
+    working_dir: /work
+    environment:
+      E2E_BASE_URL: http://web:3000
+      CI: "true"
+    volumes:
+      - ../web:/work
+      # Keep the Linux install separate from the host's Windows node_modules.
+      - e2e_node_modules:/work/node_modules
+    command: ["sh", "-c", "npm ci && npx playwright test"]
+    depends_on:
+      web:
+        condition: service_healthy
+
+volumes:
+  e2e_node_modules:

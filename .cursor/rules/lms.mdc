@@ -1,0 +1,31 @@
+---
+description: LMS project rules
+globs: ["backend/**", "web/**"]
+alwaysApply: true
+---
+
+# Project
+RAG-powered multi-portal LMS. Read prd.md and architecture.md before any task.
+Follow implementation.md phase by phase. Implement only the requested phase.
+
+# Non-negotiables
+- Release gate: student paths must filter released topics in service, SQL scope, and Chroma.
+- Postgres is the source of truth; Chroma is a derived index.
+- Never expose correct_option, explanation, or release_state in student DTOs.
+- Every schema change has an Alembic migration; never edit applied migrations.
+- Every mutating endpoint has an RBAC test.
+- No secrets in code; read config only from Settings.
+- Chroma is accessed over HTTP (server mode), never embedded.
+- Embedding model loads in the worker only.
+
+# Style
+- Python 3.12, full type hints, ruff + mypy strict.
+- SQLAlchemy 2.0 async, Mapped[] style.
+- Next.js App Router, TypeScript strict, TanStack Query, zod.
+- RFC 7807 errors with request_id.
+
+# Workflow
+1. State a short plan with files to create/modify.
+2. Implement.
+3. Run the phase verification commands.
+4. Report files, test output, and deviations.

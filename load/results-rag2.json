@@ -1,0 +1,310 @@
+{
+    "root_group": {
+        "groups": {},
+        "checks": {
+                "status is 200": {
+                    "name": "status is 200",
+                    "path": "::status is 200",
+                    "id": "6210a8cd14cd70477eba5c5e4cb3fb5f",
+                    "passes": 62,
+                    "fails": 0
+                },
+                "stream completed": {
+                    "name": "stream completed",
+                    "path": "::stream completed",
+                    "id": "5e0ce28d0f9f01961ed0d15b78b171d8",
+                    "passes": 60,
+                    "fails": 0
+                }
+            },
+        "name": "",
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "metrics": {
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 67,
+            "thresholds": {
+                "rate<0.01": false
+            },
+            "value": 0
+        },
+        "http_req_tls_handshaking": {
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0,
+            "min": 0,
+            "med": 0
+        },
+        "dropped_iterations": {
+            "count": 1,
+            "rate": 0.03214514449880758
+        },
+        "http_reqs": {
+            "count": 67,
+            "rate": 2.153724681420108
+        },
+        "vus_max": {
+            "max": 16,
+            "value": 16,
+            "min": 15
+        },
+        "data_sent": {
+            "rate": 1727.9622425334016,
+            "count": 53755
+        },
+        "http_req_duration{scenario:crud}": {
+            "avg": 130.9042575,
+            "min": 73.088763,
+            "med": 130.9042575,
+            "max": 188.719752,
+            "p(90)": 177.1566531,
+            "p(95)": 182.93820255,
+            "thresholds": {
+                "p(95)<400": false
+            }
+        },
+        "http_req_sending": {
+            "avg": 1.3628757462686567,
+            "min": 0.055349,
+            "med": 0.196515,
+            "max": 40.286742,
+            "p(90)": 2.8188519999999992,
+            "p(95)": 5.157382699999994
+        },
+        "iteration_duration": {
+            "avg": 360.7007835322581,
+            "min": 74.75046,
+            "med": 174.6133825,
+            "max": 2529.380672,
+            "p(90)": 1010.7615386999996,
+            "p(95)": 1501.7059438499987
+        },
+        "data_received": {
+            "count": 44059,
+            "rate": 1416.2829214729632
+        },
+        "vus": {
+            "max": 5,
+            "value": 1,
+            "min": 1
+        },
+        "iterations": {
+            "count": 62,
+            "rate": 1.9929989589260702
+        },
+        "http_req_duration": {
+            "avg": 341.6412417761194,
+            "min": 50.264042,
+            "med": 166.391775,
+            "max": 2505.651056,
+            "p(90)": 824.7367659999995,
+            "p(95)": 1399.425030199999
+        },
+        "http_req_duration{scenario:rag}": {
+            "avg": 363.0887194166666,
+            "min": 85.791551,
+            "med": 172.412059,
+            "max": 2505.651056,
+            "p(90)": 1046.9954357000001,
+            "p(95)": 1481.4924220999999,
+            "thresholds": {
+                "p(95)<8000": false
+            }
+        },
+        "http_req_connecting": {
+            "avg": 0.15775199999999998,
+            "min": 0,
+            "med": 0,
+            "max": 2.34348,
+            "p(90)": 0.6461812,
+            "p(95)": 1.1282990999999973
+        },
+        "http_req_waiting": {
+            "max": 2496.232246,
+            "p(90)": 821.8931131999994,
+            "p(95)": 1392.762851799999,
+            "avg": 339.3393919402984,
+            "min": 49.97298,
+            "med": 165.185994
+        },
+        "checks": {
+            "passes": 122,
+            "fails": 0,
+            "thresholds": {
+                "rate>0.99": false
+            },
+            "value": 1
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 341.6412417761194,
+            "min": 50.264042,
+            "med": 166.391775,
+            "max": 2505.651056,
+            "p(90)": 824.7367659999995,
+            "p(95)": 1399.425030199999
+        },
+        "http_req_receiving": {
+            "p(95)": 2.752709299999997,
+            "avg": 0.9389740895522389,
+            "min": 0.140824,
+            "med": 0.552617,
+            "max": 6.089449,
+            "p(90)": 2.0745387999999996
+        },
+        "http_req_blocked": {
+            "avg": 0.7576687462686565,
+            "min": 0.006695,
+            "med": 0.048371,
+            "max": 24.017613,
+            "p(90)": 0.9662249999999999,
+            "p(95)": 2.2119412999999932
+        }
+    },
+    "setup_data": {
+        "perSession": [
+            [
+                {
+                    "courseId": "01a19845-5094-797c-b1b4-81fe09d297a4",
+                    "id": "01a19ae9-5708-774a-b135-9a42cd618a4e"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19ae9-5779-7379-9f8e-d3f3b833b23c"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b57-9e05-7c6d-98d0-f3e6a75d0a7d"
+                },
+                {
+                    "id": "01a19b58-79d0-7bbd-a74b-64835f524181",
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa69-b9fb-7b37-9f30-308f214d45eb"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa6a-65e5-75ed-8d64-ddc1d022ac7a"
+                }
+            ],
+            [
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19ae9-5779-7379-9f8e-d3f3b833b23c"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b57-9e05-7c6d-98d0-f3e6a75d0a7d"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b58-79d0-7bbd-a74b-64835f524181"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa69-b9fb-7b37-9f30-308f214d45eb"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa6a-65e5-75ed-8d64-ddc1d022ac7a"
+                }
+            ],
+            [
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19ae9-5779-7379-9f8e-d3f3b833b23c"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b57-9e05-7c6d-98d0-f3e6a75d0a7d"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b58-79d0-7bbd-a74b-64835f524181"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa69-b9fb-7b37-9f30-308f214d45eb"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa6a-65e5-75ed-8d64-ddc1d022ac7a"
+                }
+            ],
+            [
+                {
+                    "courseId": "01a19845-5094-797c-b1b4-81fe09d297a4",
+                    "id": "01a19ae9-5708-774a-b135-9a42cd618a4e"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19ae9-5779-7379-9f8e-d3f3b833b23c"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b57-9e05-7c6d-98d0-f3e6a75d0a7d"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b58-79d0-7bbd-a74b-64835f524181"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa69-b9fb-7b37-9f30-308f214d45eb"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa6a-65e5-75ed-8d64-ddc1d022ac7a"
+                }
+            ],
+            [
+                {
+                    "id": "01a19ae9-5779-7379-9f8e-d3f3b833b23c",
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b57-9e05-7c6d-98d0-f3e6a75d0a7d"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a19b58-79d0-7bbd-a74b-64835f524181"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa69-b9fb-7b37-9f30-308f214d45eb"
+                },
+                {
+                    "courseId": "01a19845-5087-795a-aefb-e6e09ba723b1",
+                    "id": "01a1aa6a-65e5-75ed-8d64-ddc1d022ac7a"
+                }
+            ]
+        ],
+        "sessions": [
+            {
+                "cookie": "lms_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMWExOTg0NS00YWNiLTc4YTctYmQzMC00MGQ5MzQwYzlkZWIiLCJyb2xlIjoic3R1ZGVudCIsInR5cGUiOiJhY2Nlc3MiLCJqdGkiOiI3MmJmOTUxODRlYmM0YzYxOTYyNzFjMjM2ZjU2ZmE3MyIsImlhdCI6MTc5Mzg2OTY0NSwiZXhwIjoxNzkzODcwNTQ1fQ.WN6YaboPdHyCoc9V4iuW1avX9NJPErXnFd_hBUBe0M8; lms_refresh=NYfAdNQWJmoo1cFgIpRlNvf8-8tc2DcGi2a6U0yHrKaq-Ay29APuSXAfRjFV0XHP; lms_role=student; lms_csrf=ZbhXA6ITH_fa5ltLfV6R-NjqGkL2obhVEH4jFGaE6d0",
+                "csrf": "ZbhXA6ITH_fa5ltLfV6R-NjqGkL2obhVEH4jFGaE6d0"
+            },
+            {
+                "cookie": "lms_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMWExOTg0NS00YjJhLTczNzctYmUwMi0xODYwMDM0NjZhNGYiLCJyb2xlIjoic3R1ZGVudCIsInR5cGUiOiJhY2Nlc3MiLCJqdGkiOiI5NGE4MDVmYzBhYjc0ZDhmOTE4ZDQ3YzY1OWMzZDJmMSIsImlhdCI6MTc5Mzg2OTY0NSwiZXhwIjoxNzkzODcwNTQ1fQ.sNCvoZJ5_f2w8ivoEn2B3dnITOlBvvvyQVg4sWu3N7E; lms_refresh=hB9pRYUZu-vcrDz36BFSUe1amyXRTicRSoTWRKNzAEOO60rDxWmepXpfvD-HgI9u; lms_role=student; lms_csrf=e4B_N7e6Jqwa1xtJYo3NXZlPY5MmVPda8Tsr3NdKzkw",
+                "csrf": "e4B_N7e6Jqwa1xtJYo3NXZlPY5MmVPda8Tsr3NdKzkw"
+            },
+            {
+                "cookie": "lms_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMWExOTg0NS00YjgzLTc3ZDMtODNjMy05ZmVjZGRlMDM5MmMiLCJyb2xlIjoic3R1ZGVudCIsInR5cGUiOiJhY2Nlc3MiLCJqdGkiOiJkOTA0YWNmYTEzYjI0YzBmYTI3NjY0MTM3NDBiODc3ZCIsImlhdCI6MTc5Mzg2OTY0NSwiZXhwIjoxNzkzODcwNTQ1fQ.AS_dr0u6SCzowZMcz8q6hscECzxkq1dknbyulXVhVd0; lms_refresh=PkaFC9A5SmZgtaRKocmRC8ISpPKHJw0C1oVZXIVO8pgrKWX1GRc2SsnQPcKTZ6M3; lms_role=student; lms_csrf=dAlFcjMdt1MUfCcpIwIluIxktXs6QoxvwtdYHh3aU7w",
+                "csrf": "dAlFcjMdt1MUfCcpIwIluIxktXs6QoxvwtdYHh3aU7w"
+            },
+            {
+                "cookie": "lms_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMWExOTg0NS00YmI1LTc5MmUtYWYyZi00NTI3NTQxZDEzMjAiLCJyb2xlIjoic3R1ZGVudCIsInR5cGUiOiJhY2Nlc3MiLCJqdGkiOiI3ODcyMWNiNjYwNDY0ODExYWUzY2ZjODMzYzg1YmFlYiIsImlhdCI6MTc5Mzg2OTY0NiwiZXhwIjoxNzkzODcwNTQ2fQ.0pNRp4kGUGYn2VLj6ECm7hqtf009dakjF46ymU-8keo; lms_refresh=jf37XFi2g2ebEocAPAnwExshCFPIFqLjjmTMGbuOniUP-gXhHz2HP_T8dVaEY4uw; lms_role=student; lms_csrf=XE7rWRGUjSmWpw7mcwpMALC5lCgVwFuDZbNIGnDID94",
+                "csrf": "XE7rWRGUjSmWpw7mcwpMALC5lCgVwFuDZbNIGnDID94"
+            },
+            {
+                "cookie": "lms_access=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMWExOTg0NS00YmVlLTc4YTgtYmE4NS0xNGJhYzBlMzE1OWEiLCJyb2xlIjoic3R1ZGVudCIsInR5cGUiOiJhY2Nlc3MiLCJqdGkiOiI2ZjUxZjRiNmZjYWQ0ZWE0OTQxZjUyY2JmMjUyZDlhYiIsImlhdCI6MTc5Mzg2OTY0NiwiZXhwIjoxNzkzODcwNTQ2fQ.S5HkmEN7iCRxIi34SgCx0Kh6MgzTpvt7WsjHqTGP4iA; lms_refresh=WiZSV1SScPksTcvcJm3N7zb6-U9U5nBnERIa9XTHoxbM0YB1NLHFRFzUH5Dj1dql; lms_role=student; lms_csrf=Ih9cuww1m4SG3Ab_R2INjur9lKeOgOq6dVXOnokyCFc",
+                "csrf": "Ih9cuww1m4SG3Ab_R2INjur9lKeOgOq6dVXOnokyCFc"
+            }
+        ]
+    }
+}

@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.db
+*.sqlite3
+
+# Node
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Data
+data/
+uploads/
+models/
+chroma/
+backups/
+
+# Generated load-test credentials (JWT cookies)
+load/sessions.json
+
+# Textbook corpus: copyrighted, not distributed with this repository.
+# Place the PDFs at the repository root to run ingestion or the demo seed.
+/hesc*.pdf
+/hess*.pdf
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Playwright
+test-results/
+playwright-report/
