@@ -869,6 +869,14 @@ prd.md · architecture.md · implementation.md · SECURITY.md
 | `alembic upgrade head` fails on SQLite | Run from `backend/` so `script_location = migrations` resolves. |
 | Docker API never becomes healthy | `docker compose --env-file .env -f infra/docker-compose.yml logs api`; usually a migration or database password mismatch. |
 
+## Deploy on Render
+
+`docs/render.md` has the exact service settings, Docker commands, pre-deploy
+command, and environment variables. Key point: Render builds cannot reach
+Postgres or Chroma, so the vector rebuild runs as the API's **Pre-Deploy
+Command** (`python -m app.cli rebuild-vectors`), not in the build step. The
+command re-embeds every chunk from Postgres and needs no PDFs.
+
 ## Status
 
 All nine phases are implemented. The only unmet acceptance target is the

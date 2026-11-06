@@ -34,6 +34,8 @@ class VectorStoreError(RuntimeError):
 
 
 class VectorStore(Protocol):
+    def reset(self) -> None: ...
+
     def upsert(
         self,
         *,
@@ -107,6 +109,19 @@ class ChromaVectorStore:
         self._client = client
         self._collection = collection
         return collection
+
+    def reset(self) -> None:
+        """Remove every vector while preserving the collection identity.
+
+        Deleting and recreating the collection assigns it a new ID, which
+        invalidates collection handles cached by other processes (the API keeps
+        one for the life of the process). Deleting records in place keeps the
+        ID stable, so a rebuild does not break a concurrently running instance.
+        """
+        try:
+            self._get_collection().delete(where={"document_id": {"$ne": ""}})
+        except Exception as exc:
+            raise VectorStoreError("Could not reset the vector store") from exc
 
     def upsert(
         self,

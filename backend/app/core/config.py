@@ -107,9 +107,19 @@ class Settings(BaseSettings):
 
     @field_validator("database_url")
     @classmethod
-    def _database_url_required(cls, value: str) -> str:
-        if not value.strip():
+    def _normalize_database_url(cls, value: str) -> str:
+        """Accept hosted-provider URLs that omit the async driver.
+
+        Render (and Heroku) hand out ``postgresql://`` URLs, but SQLAlchemy's
+        async engine needs an async driver in the scheme. Normalize the common
+        forms so ``DATABASE_URL`` can be pasted straight from the provider.
+        """
+        value = value.strip()
+        if not value:
             raise ValueError("DATABASE_URL must not be empty")
+        for scheme in ("postgres://", "postgresql://"):
+            if value.startswith(scheme):
+                return "postgresql+asyncpg://" + value[len(scheme) :]
         return value
 
     @property

@@ -51,3 +51,14 @@ def test_chroma_adapter_expands_filters_for_query_delete_and_count() -> None:
     assert collection.query_kwargs["where"] == expected
     assert collection.delete_kwargs["where"] == expected
     assert collection.get_kwargs["where"] == expected
+
+
+def test_reset_clears_records_without_replacing_the_collection() -> None:
+    store = ChromaVectorStore(host="localhost", port=8001, collection_name="test")
+    collection = FakeCollection()
+    store._collection = collection  # type: ignore[attr-defined]
+
+    store.reset()
+
+    assert collection.delete_kwargs == {"where": {"document_id": {"$ne": ""}}}
+    assert store._collection is collection

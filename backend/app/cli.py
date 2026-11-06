@@ -20,10 +20,12 @@ from app.db.repositories import documents as documents_repo
 from app.db.repositories import topics as topics_repo
 from app.db.repositories import users as users_repo
 from app.db.session import dispose_engine, get_sessionmaker, init_engine
+from app.rag.embedder import EmbeddingError, get_embedder
 from app.rag.vector_store import VectorStoreError, get_vector_store
 from app.services.document_service import upload_document
 from app.services.ingestion_service import IngestError, reset_for_retry, run_ingest
 from app.services.storage import get_storage
+from app.services.vector_rebuild_service import rebuild_vectors
 
 
 async def _scope_for_user(session: AsyncSession, user: User) -> CourseScope:
@@ -140,6 +142,26 @@ async def _reindex(args: argparse.Namespace) -> int:
         await dispose_engine()
 
 
+async def _rebuild_vectors(args: argparse.Namespace) -> int:
+    del args
+    init_engine()
+    try:
+        async with get_sessionmaker()() as session:
+            count = await rebuild_vectors(
+                session,
+                settings=get_settings(),
+                embedder=get_embedder(),
+                vector_store=get_vector_store(),
+            )
+        print(f"vectors={count}")
+        return 0
+    except (EmbeddingError, VectorStoreError) as exc:
+        print(f"Vector rebuild failed: {exc}", file=sys.stderr)
+        return 1
+    finally:
+        await dispose_engine()
+
+
 async def _vector_stats(args: argparse.Namespace) -> int:
     vector_store = get_vector_store()
     try:
@@ -176,6 +198,11 @@ def build_parser() -> argparse.ArgumentParser:
     reindex = subparsers.add_parser("reindex", help="Re-run ingestion for a document")
     reindex.add_argument("document_id", type=uuid.UUID)
     reindex.set_defaults(func=_reindex)
+
+    rebuild = subparsers.add_parser(
+        "rebuild-vectors", help="Re-embed all chunks into a fresh index"
+    )
+    rebuild.set_defaults(func=_rebuild_vectors)
 
     stats = subparsers.add_parser("vector-stats", help="Show vector collection counts")
     stats.add_argument("--document-id", type=uuid.UUID, default=None)

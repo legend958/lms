@@ -61,6 +61,9 @@ class FakeVectorStore:
     def __init__(self) -> None:
         self.records: dict[str, dict[str, Any]] = {}
 
+    def reset(self) -> None:
+        self.records.clear()
+
     def upsert(
         self,
         *,
