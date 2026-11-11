@@ -51,6 +51,11 @@ from the service's **Connect** menu as `CHROMA_HOST` on the API.
 vectors first. An empty database is a no-op, so the first deploy does not erase
 anything.
 
+Render mounts persistent disks root-owned. The image's entrypoint takes
+ownership of `/data` on boot and then re-execs the start command as the
+unprivileged `app` user with `setpriv`, so uploads work without running the API
+as root.
+
 ### 3. Web (Web Service)
 
 | Field | Value |

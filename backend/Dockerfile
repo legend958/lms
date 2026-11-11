@@ -50,14 +50,21 @@ COPY migrations ./migrations
 COPY tests ./tests
 COPY eval ./eval
 
-# Run as an unprivileged user. The uploads volume is the only writable data
+# Create the unprivileged user. The uploads volume is the only writable data
 # path at runtime; the model cache and source tree stay read-only.
 RUN groupadd --system app \
     && useradd --system --gid app --home-dir /home/app --create-home app \
     && mkdir -p /data/uploads \
     && chown -R app:app /app /data /models /home/app
 
-USER app
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Start as root only long enough to take ownership of the render-mounted disk,
+# then the entrypoint re-execs every command as "app" with setpriv. Render's
+# Docker Command replaces CMD but keeps this ENTRYPOINT, so the privilege drop
+# also wraps a custom uvicorn command.
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 ENV HOME=/home/app
 

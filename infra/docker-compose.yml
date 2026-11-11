@@ -71,6 +71,11 @@ services:
       API_WORKERS: ${API_WORKERS:-1}
     ports:
       - "8000:8000"
+    # The image starts as root so its entrypoint can take ownership of the
+    # Render-mounted disk, then drops to "app" with setpriv. Local compose
+    # starts as "app" directly because the named volume is already app-owned
+    # and cap_drop makes the root-only chown path impossible.
+    user: "app"
     read_only: true
     tmpfs:
       - /tmp
@@ -124,6 +129,7 @@ services:
       GROQ_QUIZ_RETRIES: ${GROQ_QUIZ_RETRIES:-5}
     volumes:
       - uploads:/data/uploads
+    user: "app"
     read_only: true
     tmpfs:
       - /tmp
